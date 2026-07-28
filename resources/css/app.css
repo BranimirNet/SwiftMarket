@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: white;
+    padding: 40px;
+}
+
+.product {
+    background: #222;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+h1 {
+    color: #00ff88;
+}
+
+.price {
+    color: #00ff88;
+    font-weight: bold;
+}
+
+.category {
+    color: #aaa;
+}
