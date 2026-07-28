@@ -43,6 +43,8 @@ h1 {
 
 @foreach($products as $product)
 
+<a href="{{ route('products.show', $product) }}" style="text-decoration:none; color:white;">
+
 <div class="product">
 
     <h2>
