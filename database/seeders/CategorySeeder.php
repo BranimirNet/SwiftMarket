@@ -13,8 +13,8 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         Category::create([
-            'name' => 'Gaming Mice',
-            'slug' => 'gaming-mice',
+            'name' => 'Gaming Mouse',
+            'slug' => 'gaming-mouse',
         ]);
 
         Category::create([

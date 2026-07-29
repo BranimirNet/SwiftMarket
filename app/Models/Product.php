@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Image;
 
 class Product extends Model
 {
@@ -13,11 +14,17 @@ class Product extends Model
         'description',
         'price',
         'stock',
-        'image'
     ];
+
 
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+
+    public function image()
+    {
+        return $this->hasOne(Image::class, 'product_id');
     }
 }

@@ -12,7 +12,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::with('image')->get();
 
     return view('products.index', compact('products'));
     }
@@ -21,16 +21,35 @@ class ProductController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        //
-    }
+{
+    return view('products.create');
+}
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+        'name' => 'required',
+        'price' => 'required',
+        'image' => 'image|nullable'
+    ]);
+
+    $imagePath = null;
+
+    if($request->hasFile('image')){
+        $imagePath = $request->file('image')->store('products', 'public');
+    }
+
+    Product::create([
+        'name' => $request->name,
+        'description' => $request->description,
+        'price' => $request->price,
+        'image' => $imagePath
+    ]);
+
+    return redirect()->route('products.index');
     }
 
     /**
@@ -38,6 +57,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+     $product->load(['image', 'category']);
+
     return view('products.show', compact('product'));
     }
 
