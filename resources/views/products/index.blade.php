@@ -82,7 +82,7 @@
     <a href="{{ route('products.show', $product) }}">
 
         <img 
-            src="{{ asset('storage/' . $product->image->image) }}" 
+            src="{{ asset('images/products/' . basename($product->image->image)) }}"
             alt="{{ $product->name }}"
             width="200"
         >
