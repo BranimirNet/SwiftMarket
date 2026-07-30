@@ -55,13 +55,12 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
-    {
-     $product->load(['image', 'category']);
-
-    return view('products.show', compact('product'));
-    }
-
+   public function show(Product $product)
+{
+    return view('products.show', [
+        'product' => $product->load(['image', 'category'])
+    ]);
+}
     /**
      * Show the form for editing the specified resource.
      */
