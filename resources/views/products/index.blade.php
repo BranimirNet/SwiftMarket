@@ -60,9 +60,16 @@
 </style>
 
 
-<h1>
-    SwiftMarket Products
+<div class="mb-6">
+   <h1 class="text-4xl font-bold tracking-tight">
+    <span class="text-white">Swift</span><span class="text-green-400">Market</span>
 </h1>
+
+<p class="text-gray-400 mt-2">
+    Premium gaming peripherals and accessories
+</p>
+
+</div>
 
 
 @foreach($products as $product)
