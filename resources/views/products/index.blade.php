@@ -22,6 +22,15 @@
         margin-top: 15px;
     }
 
+    .product h2 a {
+    color: #00ff88;
+    text-decoration: none;
+}
+
+   .product h2 a:hover {
+    color: white;
+}
+
     h1 {
         color: #00ff88;
     }
@@ -63,19 +72,23 @@
 
     @if($product->image)
 
+    <a href="{{ route('products.show', $product) }}">
+
         <img 
             src="{{ asset('storage/' . $product->image->image) }}" 
             alt="{{ $product->name }}"
             width="200"
         >
-
+    </a>
     @endif
 
 
 
-    <h2>
+   <h2>
+    <a href="{{ route('products.show', $product) }}">
         {{ $product->name }}
-    </h2>
+    </a>
+</h2>
 
 
 

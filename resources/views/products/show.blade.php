@@ -94,12 +94,18 @@ class="h-full object-contain">
 
 
 
-                    <button 
-                    class="mt-8 bg-black text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition">
+                    <form action="{{ route('cart.add', $product->id) }}" method="POST">
 
-                        🛒 Add to Cart
+    @csrf
 
-                    </button>
+    <button 
+        class="mt-8 bg-black text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition">
+
+        🛒 Add to Cart
+
+    </button>
+
+</form>
 
 
 
