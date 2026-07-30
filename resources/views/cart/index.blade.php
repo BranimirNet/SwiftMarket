@@ -135,9 +135,10 @@ body {
 <div class="cart-item">
 
     @if($product['image'])
-        <img src="{{ asset('storage/' . $product['image']) }}" 
-             width="120" 
-             alt="{{ $product['name'] }}">
+        <img 
+    src="{{ asset('images/products/' . basename($product['image'])) }}" 
+    width="120" 
+    alt="{{ $product['name'] }}">
     @endif
 
 
