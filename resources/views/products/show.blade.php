@@ -14,8 +14,6 @@
 
                     @if($product->image)
 
-                     {{ dd($product->image) }}
-
                        <img
 src="{{ asset('storage/' . $product->image->image) }}"
 alt="{{ $product->name }}"
