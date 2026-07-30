@@ -17,6 +17,28 @@
                     <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
                         Products
                     </x-nav-link>
+                    <x-nav-link :href="route('cart.index')" :active="request()->routeIs('cart.index')">
+
+    🛒 Cart
+
+    @php
+        $cartCount = 0;
+
+        foreach(session('cart', []) as $item) {
+            $cartCount += $item['quantity'];
+        }
+    @endphp
+
+
+    @if($cartCount > 0)
+
+        <span class="ml-1 bg-green-500 text-black rounded-full px-2 text-xs font-bold">
+            {{ $cartCount }}
+        </span>
+
+    @endif
+
+</x-nav-link>
 
                 </div>
             </div>
@@ -157,6 +179,30 @@
                 Products
 
             </x-responsive-nav-link>
+
+             <x-nav-link :href="route('cart.index')" :active="request()->routeIs('cart.index')">
+
+        🛒 Cart
+
+        @php
+            $cartCount = 0;
+
+            if(session()->has('cart')) {
+                foreach(session('cart') as $item) {
+                    $cartCount += $item['quantity'];
+                }
+            }
+        @endphp
+
+
+        @if($cartCount > 0)
+            <span class="ml-1 bg-green-500 text-black rounded-full px-2 text-xs font-bold">
+                {{ $cartCount }}
+            </span>
+        @endif
+
+    </x-nav-link>
+
 
         </div>
 
