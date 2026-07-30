@@ -14,10 +14,10 @@
 
                     @if($product->image)
 
-                       <img
-src="{{ asset('storage/' . $product->image->image) }}"
-alt="{{ $product->name }}"
-class="h-full object-contain">
+                      <img
+                  src="{{ asset('images/products/' . basename($product->image->image)) }}"
+                  alt="{{ $product->name }}"
+                  class="h-full object-contain">
 
                     @else
 
