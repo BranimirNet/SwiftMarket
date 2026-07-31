@@ -49,6 +49,34 @@
                 </div>
             </div>
 
+            <!-- Search -->
+    <div class="hidden sm:flex sm:items-center sm:ms-6">
+
+       <form action="{{ route('products.index') }}" method="GET" class="relative">
+
+    <input 
+        type="text"
+        name="search"
+        value="{{ request('search') }}"
+        placeholder="Search products..."
+        class="bg-zinc-900 border border-zinc-700 text-white rounded-lg px-4 py-2 pr-10 focus:outline-none focus:border-green-500"
+    >
+
+
+    @if(request('search'))
+
+        <a href="{{ route('products.index') }}"
+           class="absolute right-3 top-2 text-gray-400 hover:text-green-400">
+            ✕
+        </a>
+
+    @endif
+
+
+</form>
+
+    </div>
+
 
             <!-- Right side -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -215,6 +243,8 @@
 
 
         </div>
+
+        
 
 
         @auth

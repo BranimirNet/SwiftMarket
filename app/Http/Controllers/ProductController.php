@@ -12,9 +12,16 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('image')->get();
+         $products = Product::all();
 
-    return view('products.index', compact('products'));
+    if(request('search')) {
+
+        $products = Product::where('name', 'like', '%' . request('search') . '%')
+            ->get();
+
+    }
+
+         return view('products.index', compact('products'));
     }
 
     /**
@@ -84,4 +91,15 @@ class ProductController extends Controller
     {
         //
     }
+
+    public function search(Request $request)
+{
+    $search = $request->search;
+
+    $products = Product::where('name', 'like', '%' . $search . '%')
+        ->orWhere('description', 'like', '%' . $search . '%')
+        ->get();
+
+    return view('products.index', compact('products'));
+}
 }
