@@ -72,6 +72,33 @@
 </div>
 
 
+<!-- CATEGORY FILTER -->
+
+<div class="flex gap-3 mb-6">
+
+    <a href="{{ route('products.index') }}"
+       class="bg-zinc-800 text-white px-4 py-2 rounded-lg hover:bg-green-500 hover:text-black">
+        All
+    </a>
+
+
+    @foreach($categories as $category)
+
+        <a href="{{ route('products.index', ['category' => $category->id]) }}"
+           class="bg-zinc-800 text-white px-4 py-2 rounded-lg hover:bg-green-500 hover:text-black">
+
+            {{ $category->name }}
+
+        </a>
+
+    @endforeach
+
+</div>
+
+
+
+<!-- PRODUCTS -->
+ 
 @foreach($products as $product)
 
 <div class="product">

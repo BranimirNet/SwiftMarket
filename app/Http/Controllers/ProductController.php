@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
@@ -12,16 +13,31 @@ class ProductController extends Controller
      */
     public function index()
     {
-         $products = Product::all();
+          $search = request('search');
+          $category = request('category');
 
-    if(request('search')) {
 
-        $products = Product::where('name', 'like', '%' . request('search') . '%')
-            ->get();
+    $products = Product::when($search, function($query) use ($search) {
 
-    }
+        $query->where(function($query) use ($search) {
 
-         return view('products.index', compact('products'));
+    $query->where('name', 'like', '%' . $search . '%')
+          ->orWhere('description', 'like', '%' . $search . '%');
+
+     });
+    })
+    ->when($category, function($query) use ($category) {
+
+        $query->where('category_id', $category);
+
+    })
+    ->get();
+
+
+    $categories = Category::all();
+
+
+    return view('products.index', compact('products', 'categories'));
     }
 
     /**
