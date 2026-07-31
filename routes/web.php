@@ -23,6 +23,8 @@ Route::post('/cart/increase/{id}', [CartController::class, 'increase'])->name('c
 
 Route::post('/cart/decrease/{id}', [CartController::class, 'decrease'])->name('cart.decrease');
 
+Route::view('/about', 'products.about')->name('about');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

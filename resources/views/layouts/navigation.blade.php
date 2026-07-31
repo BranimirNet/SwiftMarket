@@ -18,6 +18,11 @@
                     <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
                         Products
                     </x-nav-link>
+
+                    <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
+                     About Us
+                    </x-nav-link>
+
                     <x-nav-link :href="route('cart.index')" :active="request()->routeIs('cart.index')">
 
     🛒 Cart
@@ -179,6 +184,10 @@
 
                 Products
 
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('about')">
+            About Us
             </x-responsive-nav-link>
 
              <x-nav-link :href="route('cart.index')" :active="request()->routeIs('cart.index')">
