@@ -7,34 +7,36 @@ use App\Models\Category;
 
 class CategorySeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        Category::create([
-            'name' => 'Gaming Mouse',
-            'slug' => 'gaming-mouse',
-        ]);
+        $categories = [
+            [
+                'name' => 'Gaming Mouse',
+                'slug' => 'gaming-mouse',
+            ],
+            [
+                'name' => 'Gaming Keyboard',
+                'slug' => 'gaming-keyboard',
+            ],
+            [
+                'name' => 'Gaming Headset',
+                'slug' => 'gaming-headset',
+            ],
+            [
+                'name' => 'Gaming Monitor',
+                'slug' => 'gaming-monitor',
+            ],
+            [
+                'name' => 'Gaming Chair',
+                'slug' => 'gaming-chair',
+            ],
+        ];
 
-        Category::create([
-            'name' => 'Keyboards',
-            'slug' => 'keyboards',
-        ]);
-
-        Category::create([
-            'name' => 'Headsets',
-            'slug' => 'headsets',
-        ]);
-
-        Category::create([
-            'name' => 'Monitors',
-            'slug' => 'monitors',
-        ]);
-
-        Category::create([
-            'name' => 'Gaming Chairs',
-            'slug' => 'gaming-chairs',
-        ]);
+        foreach ($categories as $category) {
+            Category::updateOrCreate(
+                ['slug' => $category['slug']],
+                ['name' => $category['name']]
+            );
+        }
     }
 }
