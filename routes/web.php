@@ -28,7 +28,7 @@ Route::view('/about', 'products.about')->name('about');
 Route::get('/products/search', [ProductController::class, 'search'])
     ->name('products.search');
 
-Route::get('/products/{category:slug}', [ProductController::class, 'category'])
+Route::get('/category/{category:slug}', [ProductController::class, 'category'])
     ->name('products.category');
     
 Route::get('/dashboard', function () {
