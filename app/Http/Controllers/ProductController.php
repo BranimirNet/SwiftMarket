@@ -14,28 +14,17 @@ class ProductController extends Controller
     public function index()
     {
           $search = request('search');
-          $category = request('category');
 
-
-    $products = Product::when($search, function($query) use ($search) {
-
-        $query->where(function($query) use ($search) {
-
-    $query->where('name', 'like', '%' . $search . '%')
-          ->orWhere('description', 'like', '%' . $search . '%');
-
-     });
-    })
-    ->when($category, function($query) use ($category) {
-
-        $query->where('category_id', $category);
-
-    })
-    ->get();
-
+    $products = Product::with(['category', 'image'])
+        ->when($search, function ($query) use ($search) {
+            $query->where(function ($query) use ($search) {
+                $query->where('name', 'like', '%' . $search . '%')
+                      ->orWhere('description', 'like', '%' . $search . '%');
+            });
+        })
+        ->get();
 
     $categories = Category::all();
-
 
     return view('products.index', compact('products', 'categories'));
     }
@@ -110,12 +99,30 @@ class ProductController extends Controller
 
     public function search(Request $request)
 {
-    $search = $request->search;
+     $search = $request->search;
 
-    $products = Product::where('name', 'like', '%' . $search . '%')
+    $products = Product::with(['category', 'image'])
+        ->where('name', 'like', '%' . $search . '%')
         ->orWhere('description', 'like', '%' . $search . '%')
         ->get();
 
-    return view('products.index', compact('products'));
+    $categories = Category::all();
+
+    return view('products.index', compact('products', 'categories'));
+}
+
+public function category(Category $category)
+{
+    $products = Product::where('category_id', $category->id)
+        ->with(['category', 'image'])
+        ->get();
+
+    $categories = Category::all();
+
+    return view('products.index', compact(
+        'products',
+        'categories',
+        'category'
+    ));
 }
 }

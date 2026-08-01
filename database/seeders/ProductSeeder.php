@@ -19,7 +19,7 @@ class ProductSeeder extends Seeder
         ]);
 
         Product::create([
-            'category_id' => 2,
+            'category_id' => 1,
             'name' => 'Razer DeathAdder V3',
             'slug' => 'razer-deathadder-v3',
             'description' => 'Ergonomic esports gaming mouse.',
@@ -28,7 +28,7 @@ class ProductSeeder extends Seeder
         ]);
 
         Product::create([
-            'category_id' => 3,
+            'category_id' => 2,
             'name' => 'Razer BlackWidow V4',
             'slug' => 'razer-blackwidow-v4',
             'description' => 'Mechanical gaming keyboard.',
@@ -37,7 +37,7 @@ class ProductSeeder extends Seeder
         ]);
 
         Product::create([
-            'category_id' => 4,
+            'category_id' => 3,
             'name' => 'HyperX Cloud III',
             'slug' => 'hyperx-cloud-iii',
             'description' => 'High quality gaming headset.',
