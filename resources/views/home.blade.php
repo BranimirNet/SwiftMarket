@@ -11,7 +11,7 @@
 
         <p class="text-gray-300 text-lg max-w-2xl mx-auto mb-8">
             Your ultimate destination for premium gaming equipment.
-            Find gaming mice, keyboards, headsets and more.
+            Find gaming mouse, keyboards, headsets and more.
         </p>
 
         <a href="{{ route('products.index') }}"

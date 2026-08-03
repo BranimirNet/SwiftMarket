@@ -10,7 +10,6 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::with('image')
-            ->latest()
             ->take(4)
             ->get();
 
