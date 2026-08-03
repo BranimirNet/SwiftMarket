@@ -6,10 +6,11 @@
             <div class="flex">
 
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('products.index') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-white" />
-                    </a>
+               <div class="shrink-0 flex items-center">
+               <a href="{{ route('products.index') }}"
+                class="text-2xl font-bold text-white hover:text-green-400 transition">
+                      Swift<span class="text-green-500">Market</span>
+                   </a>
                 </div>
 
                 <!-- Navigation Links -->
