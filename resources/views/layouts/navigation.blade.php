@@ -15,6 +15,10 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
 
+                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                       {{ __('Home') }}
+                    </x-nav-link>
+
                     <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
                         Products
                     </x-nav-link>
