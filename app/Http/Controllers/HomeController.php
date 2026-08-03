@@ -9,9 +9,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $products = Product::with('image')
-        ->get();
-
+        $products = Product::with(['category', 'image'])
+            ->whereHas('image')
+            ->take(4)
+            ->get();
         return view('home', compact('products'));
     }
 }
