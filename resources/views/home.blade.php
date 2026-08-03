@@ -72,10 +72,13 @@
             <div class="bg-zinc-800 rounded-xl p-4">
 
                 @if($product->image)
-                    <img 
-                    src="{{ asset('storage/' . $product->image->image) }}"
-                    class="w-full h-48 object-cover rounded-lg">
-                @endif
+
+<img 
+    src="{{ asset('images/products/' . basename($product->image->image)) }}"
+    alt="{{ $product->name }}"
+    class="w-full h-48 object-cover rounded-lg">
+
+@endif
 
 
                 <h3 class="font-bold mt-4">
